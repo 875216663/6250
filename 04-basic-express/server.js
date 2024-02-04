@@ -1,24 +1,22 @@
-const express = require('express');
+const express = require('express');// 引入express模块
 const app = express();
-const PORT = 3000;
+const PORT = 3000;// 定义端口号
 
-const chat = require('./chat'); // "chat" holds all the non-web logic for managing users/messages
-const chatWeb = require('./chat-web'); // "chat-web" holds the templates for the generated HTML
+const chat = require('./chat');// 引入chat模块
+const chatWeb = require('./chat-web');// 引入chat-web模块
 
-app.use(express.static('./public'));
+app.use(express.static('./public'));// 设置静态文件目录
 
+// Below includes an example of sending HTML as a response
 app.get('/', (req, res) => {
   res.send(chatWeb.chatPage(chat));
 });
 
-
-// Below includes an example of pulling fields from a POST request body
+// 下面是发送 HTML 作为响应的示例
 app.post('/chat', express.urlencoded({ extended: false }), (req, res) => {
-  // Fill in here - Do not return HTML, just update server data
-  // 注意：这里应该从表单中获取'username'和'text'
   const { username, text } = req.body;
   chat.addMessage({ sender: username, text });
-  res.redirect('/'); // Redirect to the home page
+  res.redirect('/');
 });
 
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));

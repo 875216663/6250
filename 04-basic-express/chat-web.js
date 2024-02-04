@@ -18,6 +18,7 @@ const chatWeb = {
     `;
   },
 
+  //生成用户列表
   getUserList: function(chat) {
     return `<ul class="users">` +
       Object.values(chat.users).map(user => `
@@ -30,6 +31,7 @@ const chatWeb = {
       `</ul>`;
   },
 
+  //生成消息列表
   getMessageList: function(chat) {
     return `<ol class="messages">` +
       chat.messages.map(message => {
