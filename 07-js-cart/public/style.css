@@ -1,0 +1,90 @@
+:root {
+    /* 更新颜色方案 */
+    --background-color: #F0F0F3;
+    --cart-background-color: #FFFFFF;
+    --product-background-color: #FFFFFF;
+    --text-color: #333;
+    --primary-color: #5D5FEF; /* 新增主要颜色 */
+    --secondary-color: #FFC107; /* 新增次要颜色 */
+    --border-color: #E0E0E0; /* 新增边框颜色 */
+
+    /* 间距和圆角 */
+    --gap-size: 1rem;
+    --border-radius: 8px; /* 更圆润的边角 */
+
+    /* 字体 */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6; /* 提高行高使文本更易读 */
+}
+
+#app {
+    max-width: 1200px; /* 定义最大宽度 */
+    margin: 2rem auto;
+    padding: 1rem;
+    background: var(--cart-background-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 添加阴影 */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: var(--gap-size);
+    border-bottom: 1px solid var(--border-color); /* 添加边框 */
+    padding-bottom: var(--gap-size);
+}
+
+.listings, .carts {
+    display: grid;
+    gap: var(--gap-size);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.product, .cart {
+    background-color: var(--product-background-color);
+    border-radius: var(--border-radius);
+    padding: var(--gap-size);
+    margin-bottom: var(--gap-size);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 轻微的阴影 */
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .listings, .carts {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #app {
+        width: 95%;
+        margin: 0.5rem auto;
+    }
+
+    .listings, .carts {
+        grid-template-columns: 1fr;
+    }
+}

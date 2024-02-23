@@ -7,6 +7,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -25,7 +26,7 @@ module.exports = {
   devServer: {
     static: path.join(__dirname, 'public'),
     compress: true,
-    port: 5000
+    port: 4000
   },
 };
 
